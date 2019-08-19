@@ -1,5 +1,5 @@
 exports.fish = environment => {
-  environment = environment[1];
+  environment = environment[1].toLowerCase();
   switch (
     environment //environment adjustment
   ) {
@@ -14,12 +14,12 @@ exports.fish = environment => {
       break;
   }
 
-  //TODO: Fix algorithm so it has a chance of catching fish
   const arr = possibilities[environment];
+  if (!arr) return `Error: ${environment} is not an environment`;
   const roll = Math.round(Math.random() * 20);
   if (roll <= 10) {
     const failState = [
-      `got pulled into the water`, //template literal in case critical failure function is ever made
+      `got pulled into the water(Critical Fail)`, //template literal in case critical failure function is ever made
       "was pulled into the water",
       "got their pole pulled into the water",
       "got their hook caught in a plant",
